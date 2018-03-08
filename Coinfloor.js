@@ -24,9 +24,16 @@
 			 */
 			_event_handlers["Welcome"] =  function(msg){
 				console.log("Authenticating");
-				authenticate(user_id, password, api_key, msg.nonce, function(){
+				if(user_id)
+				{
+
+					authenticate(user_id, password, api_key, msg.nonce, function(){
+						onConnect();
+					});
+				}
+				else {
 					onConnect();
-				});
+				}
 			};
 
 			/*
